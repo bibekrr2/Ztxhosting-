@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>ZTX Hosting – UPI Payment & Support</title>
   <meta name="description" content="Make a payment and contact ZTX Hosting customer support easily via UPI, Discord, or Email.">
   <meta property="og:title" content="ZTX Hosting – UPI Payment & Support">
@@ -10,7 +10,18 @@
   <meta property="og:description" content="Make a payment and contact ZTX Hosting customer support easily via UPI, Discord, or Email.">
   <meta name="theme-color" content="#00f0ff">
   <link rel="icon" href="https://ztxhosting.site/favicon.ico">
+  <!-- Font Awesome for icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <style>
+    :root {
+      --primary-color: #00f0ff;
+      --secondary-color: #0072ff;
+      --text-color: #dfe4f2;
+      --bg-gradient: linear-gradient(135deg, #0a0a1a 0%, #0c1630 100%);
+      --card-bg: rgba(255, 255, 255, 0.05);
+      --card-border: rgba(0, 240, 255, 0.2);
+    }
+
     * {
       box-sizing: border-box;
       margin: 0;
@@ -19,8 +30,8 @@
 
     body {
       font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
-      background: linear-gradient(135deg, #0a0a1a 0%, #0c1630 100%);
-      color: #dfe4f2;
+      background: var(--bg-gradient);
+      color: var(--text-color);
       padding: 30px 20px;
       text-align: center;
       min-height: 100vh;
@@ -41,11 +52,12 @@
 
     header {
       margin-bottom: 30px;
+      animation: fadeIn 1s ease;
     }
 
     h1 {
       font-size: 2.4rem;
-      color: #00f0ff;
+      color: var(--primary-color);
       margin-bottom: 15px;
       letter-spacing: 0.5px;
       text-shadow: 0 0 15px rgba(0, 240, 255, 0.5);
@@ -59,33 +71,59 @@
       margin: 0 auto 25px;
     }
 
-    .qr-container {
-      margin: 30px auto;
-      background: rgba(255, 255, 255, 0.05);
-      padding: 25px;
+    .payment-section {
+      background: var(--card-bg);
+      padding: 30px;
       border-radius: 16px;
       box-shadow: 0 0 35px rgba(0, 240, 255, 0.3);
-      max-width: 300px;
-      border: 1px solid rgba(0, 240, 255, 0.2);
+      border: 1px solid var(--card-border);
       backdrop-filter: blur(5px);
+      margin: 30px auto;
+      max-width: 500px;
+      animation: slideUp 0.8s ease;
+    }
+
+    .qr-container {
+      margin: 0 auto 20px;
+      padding: 15px;
+      background: white;
+      border-radius: 12px;
+      width: fit-content;
     }
 
     .qr-container img {
-      width: 100%;
-      max-width: 250px;
-      border-radius: 10px;
-      box-shadow: 0 0 20px rgba(0, 240, 255, 0.6);
-      aspect-ratio: 1/1;
+      width: 220px;
+      height: 220px;
+      border-radius: 8px;
+      aspect-ratio: 1 / 1;
       object-fit: cover;
     }
 
+    .upi-details {
+      margin: 20px 0;
+      padding: 15px;
+      background: rgba(0, 240, 255, 0.1);
+      border-radius: 10px;
+      border-left: 3px solid var(--primary-color);
+    }
+
+    .upi-id {
+      font-size: 1.2rem;
+      font-weight: 600;
+      color: white;
+      word-break: break-all;
+    }
+
     .pay-button {
-      display: inline-block;
-      margin: 20px 0 10px;
-      padding: 16px 42px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      margin: 15px 0;
+      padding: 16px 32px;
       font-size: 1.1rem;
       font-weight: 700;
-      background: linear-gradient(135deg, #00c6ff 0%, #0072ff 100%);
+      background: linear-gradient(135deg, #00c6ff 0%, var(--secondary-color) 100%);
       color: #ffffff;
       border: none;
       border-radius: 12px;
@@ -96,34 +134,28 @@
       position: relative;
       overflow: hidden;
       z-index: 1;
+      width: 100%;
+      max-width: 280px;
     }
 
-    .pay-button::after {
+    .pay-button::before {
       content: '';
       position: absolute;
       top: 0;
-      left: 0;
+      left: -100%;
       width: 100%;
       height: 100%;
-      background: linear-gradient(135deg, #0072ff 0%, #00c6ff 100%);
-      opacity: 0;
-      transition: opacity 0.3s ease;
-      z-index: -1;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+      transition: 0.5s;
+    }
+
+    .pay-button:hover::before {
+      left: 100%;
     }
 
     .pay-button:hover {
       transform: translateY(-3px);
       box-shadow: 0 0 28px rgba(0, 198, 255, 0.7);
-    }
-
-    .pay-button:hover::after {
-      opacity: 1;
-    }
-
-    .notes {
-      max-width: 600px;
-      margin: 0 auto;
-      padding: 0 20px;
     }
 
     .note {
@@ -133,7 +165,10 @@
       background: rgba(0, 240, 255, 0.08);
       padding: 12px 20px;
       border-radius: 10px;
-      border-left: 3px solid #00f0ff;
+      border-left: 3px solid var(--primary-color);
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
     }
 
     .note strong {
@@ -144,24 +179,41 @@
     .support-section {
       margin: 35px 0;
       padding: 25px 0;
-      border-top: 1px solid rgba(0, 240, 255, 0.2);
-      border-bottom: 1px solid rgba(0, 240, 255, 0.2);
+      border-top: 1px solid var(--card-border);
+      border-bottom: 1px solid var(--card-border);
       width: 100%;
+      animation: fadeIn 1s ease 0.2s both;
+    }
+
+    .support-title {
+      font-size: 1.5rem;
+      margin-bottom: 20px;
+      color: var(--primary-color);
+    }
+
+    .support-links {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 15px;
+      max-width: 600px;
+      margin: 0 auto;
     }
 
     .support-link {
       display: inline-flex;
       align-items: center;
       gap: 10px;
-      margin-top: 10px;
-      font-size: 1.15rem;
+      padding: 14px 25px;
+      font-size: 1.1rem;
       color: #a9c8ff;
       text-decoration: none;
       font-weight: 600;
-      padding: 12px 25px;
       border-radius: 10px;
       transition: all 0.3s ease;
       background: rgba(169, 200, 255, 0.1);
+      border: 1px solid rgba(169, 200, 255, 0.2);
+      min-width: 220px;
     }
 
     .support-link:hover {
@@ -169,6 +221,7 @@
       background: rgba(169, 200, 255, 0.2);
       text-shadow: 0 0 5px rgba(0, 240, 255, 0.5);
       transform: translateY(-2px);
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
     }
 
     .contact-container {
@@ -180,56 +233,104 @@
       justify-content: center;
       gap: 20px;
       max-width: 500px;
-      margin: 0 auto;
+      margin-left: auto;
+      margin-right: auto;
     }
 
     .contact-item {
       display: flex;
       align-items: center;
       gap: 8px;
-      padding: 10px 20px;
+      padding: 12px 20px;
       border-radius: 10px;
       background: rgba(155, 180, 255, 0.08);
       transition: all 0.3s ease;
+      text-decoration: none;
+      color: inherit;
+      border: 1px solid rgba(155, 180, 255, 0.2);
     }
 
     .contact-item:hover {
       background: rgba(155, 180, 255, 0.15);
       transform: translateY(-2px);
-    }
-
-    a {
-      color: inherit;
-      text-decoration: none;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
     }
 
     footer {
       margin-top: 40px;
       font-size: 0.9rem;
       color: #6d8eff;
+      animation: fadeIn 1s ease 0.4s both;
     }
 
+    /* Animations */
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    @keyframes slideUp {
+      from { 
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to { 
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* Loading animation */
+    .loader {
+      display: none;
+      width: 24px;
+      height: 24px;
+      border: 3px solid rgba(255,255,255,0.3);
+      border-radius: 50%;
+      border-top-color: white;
+      animation: spin 1s ease-in-out infinite;
+    }
+
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+
+    /* Responsive styles */
     @media screen and (max-width: 600px) {
       h1 {
         font-size: 2rem;
       }
-      
+
       .subtitle {
         font-size: 1rem;
       }
-      
-      .qr-container {
-        padding: 18px;
+
+      .payment-section {
+        padding: 20px;
       }
-      
+
+      .qr-container img {
+        width: 180px;
+        height: 180px;
+      }
+
+      .support-links {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .support-link {
+        width: 100%;
+        justify-content: center;
+      }
+
       .contact-container {
         flex-direction: column;
         gap: 12px;
       }
-      
+
       .pay-button {
         width: 100%;
-        max-width: 300px;
       }
     }
   </style>
@@ -241,49 +342,74 @@
       <p class="subtitle">Make a payment below and reach out to our support team if needed</p>
     </header>
 
-    <div class="qr-container">
-      <img src="https://cdn.discordapp.com/attachments/1378295716052729858/1389876553587888240/IMG_20250702_132114.jpg?ex=686636e9&is=6864e569&hm=6ad5ab8e5b85d92a35488734c05e5c6286124835d7ceeca6bac70e22a0408a11&" 
-           alt="ZTX Hosting UPI Payment QR Code">
-    </div>
+    <div class="payment-section">
+      <div class="qr-container">
+        <img src="https://cdn.discordapp.com/attachments/1378295716052729858/1389876553587888240/IMG_20250702_132114.jpg?ex=686636e9&is=6864e569&hm=6ad5ab8e5b85d92a35488734c05e5c6286124835d7ceeca6bac70e22a0408a11&" alt="ZTX Hosting UPI Payment QR Code" />
+      </div>
 
-    <a class="pay-button" href="upi://pay?pa=9064456592@fam&pn=Bibek Mondal" target="_blank" rel="noopener noreferrer">
-      💳 Pay Now via UPI
-    </a>
+      <div class="upi-details">
+        <p>UPI ID:</p>
+        <p class="upi-id">9064456592@fam</p>
+      </div>
 
-    <div class="notes">
-      <p class="note">Redirects to your UPI app. Enter the correct amount based on your selected plan</p>
-      <p class="note">Plans range between ₹99 – ₹9999. Make sure to double-check before sending</p>
-      <p class="note">If the UPI link doesn't open, send manually to <strong>9064456592@fam</strong> using any UPI app</p>
+      <a class="pay-button" href="upi://pay?pa=9064456592@fam&pn=Bibek Mondal" target="_blank" rel="noopener noreferrer" id="payButton">
+        <i class="fas fa-credit-card"></i> Pay Now via UPI
+        <div class="loader" id="buttonLoader"></div>
+      </a>
+
+      <p class="note">After payment, please share the screenshot with our support team for confirmation.</p>
     </div>
 
     <div class="support-section">
-      <a class="support-link" href="https://discord.gg/qeBsUuQ9Ux" target="_blank" rel="noopener noreferrer">
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M19.27 5.33C18.17 4.71 16.96 4.26 15.67 4C15.41 4.5 15.11 5.16 14.87 5.68C13.5 5.46 12.11 5.46 10.76 5.68C10.52 5.15 10.21 4.5 9.96 4C8.67 4.26 7.46 4.71 6.36 5.33C3.61 8.78 2.96 12.04 3.25 15.28C4.73 16.31 6.2 17.01 7.66 17.47C8.21 16.8 8.69 16.07 9.08 15.29C8.38 14.98 7.72 14.58 7.1 14.11C7.29 13.95 7.47 13.79 7.64 13.62C10.1 15.15 12.97 15.15 15.39 13.62C15.56 13.79 15.74 13.95 15.92 14.11C15.3 14.58 14.64 14.98 13.94 15.29C14.33 16.07 14.81 16.8 15.36 17.47C16.82 17.01 18.29 16.31 19.77 15.28C20.13 11.58 19 8.31 19.27 5.33ZM9.5 14.25C8.7 14.25 8.06 13.55 8.06 12.65C8.06 11.75 8.69 11.05 9.5 11.05C10.31 11.05 10.95 11.75 10.94 12.65C10.94 13.55 10.31 14.25 9.5 14.25ZM14.5 14.25C13.7 14.25 13.06 13.55 13.06 12.65C13.06 11.75 13.69 11.05 14.5 11.05C15.31 11.05 15.95 11.75 15.94 12.65C15.94 13.55 15.31 14.25 14.5 14.25Z" fill="currentColor"/>
-        </svg>
-        Join Discord for Support
-      </a>
-    </div>
-
-    <div class="contact-container">
-      <a href="tel:+919064456592" class="contact-item">
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M20 15.5C18.8 15.5 17.5 15.3 16.4 14.9C16.3 14.9 16.2 14.9 16.1 14.9C15.8 14.9 15.6 15 15.4 15.2L13.2 17.4C10.4 15.9 8 13.6 6.6 10.8L8.8 8.6C9.1 8.3 9.2 7.9 9 7.6C8.7 6.5 8.5 5.2 8.5 4C8.5 3.4 8.1 3 7.5 3H4C3.4 3 3 3.4 3 4C3 13.4 10.6 21 20 21C20.6 21 21 20.6 21 20V16.5C21 15.9 20.6 15.5 20 15.5Z" fill="currentColor"/>
-        </svg>
-        +91 9064456592
-      </a>
+      <h2 class="support-title">Need Help? Contact Us</h2>
       
-      <a href="mailto:ztxhosting.in@gmail.com" class="contact-item">
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M20 8L12 13L4 8V6L12 11L20 6M20 4H4C2.9 4 2 4.9 2 6V18C2 19.1 2.9 20 4 20H20C21.1 20 22 19.1 22 18V6C22 4.9 21.1 4 20 4Z" fill="currentColor"/>
-        </svg>
-        ztxhosting.in@gmail.com
-      </a>
+      <div class="support-links">
+        <a class="support-link" href="https://discord.gg/qeBsUuQ9Ux" target="_blank" rel="noopener noreferrer">
+          <i class="fab fa-discord"></i> Discord Support
+        </a>
+        
+        <a class="support-link" href="mailto:ztxhosting.in@gmail.com" target="_blank" rel="noopener noreferrer">
+          <i class="fas fa-envelope"></i> Email Support
+        </a>
+        
+        <a class="support-link" href="tel:+919064456592" target="_blank" rel="noopener noreferrer">
+          <i class="fas fa-phone-alt"></i> Call Support
+        </a>
+        
+        <a class="support-link" href="https://wa.me/919064456592" target="_blank" rel="noopener noreferrer">
+          <i class="fab fa-whatsapp"></i> WhatsApp Support
+        </a>
+      </div>
     </div>
 
     <footer>
       <p>&copy; 2025 ZTX Hosting. All rights reserved.</p>
     </footer>
   </div>
+
+  <script>
+    // Add loading state to payment button
+    document.getElementById('payButton').addEventListener('click', function() {
+      const loader = document.getElementById('buttonLoader');
+      loader.style.display = 'inline-block';
+      
+      // Simulate processing delay
+      setTimeout(() => {
+        loader.style.display = 'none';
+      }, 2000);
+    });
+
+    // Copy UPI ID to clipboard
+    document.querySelector('.upi-id').addEventListener('click', function() {
+      const upiId = '9064456592@fam';
+      navigator.clipboard.writeText(upiId).then(() => {
+        const originalText = this.textContent;
+        this.textContent = 'Copied to clipboard!';
+        setTimeout(() => {
+          this.textContent = originalText;
+        }, 2000);
+      });
+    });
+  </script>
 </body>
 </html>
