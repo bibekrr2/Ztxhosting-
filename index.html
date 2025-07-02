@@ -1,145 +1,289 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Pay And Contact Customer Care</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ZTX Hosting – UPI Payment & Support</title>
+  <meta name="description" content="Make a payment and contact ZTX Hosting customer support easily via UPI, Discord, or Email.">
+  <meta property="og:title" content="ZTX Hosting – UPI Payment & Support">
+  <meta property="og:image" content="https://cdn.discordapp.com/attachments/1378295716052729858/1389851501329121310/IMG_20250702_114258.png">
+  <meta property="og:description" content="Make a payment and contact ZTX Hosting customer support easily via UPI, Discord, or Email.">
+  <meta name="theme-color" content="#00f0ff">
+  <link rel="icon" href="https://ztxhosting.site/favicon.ico">
   <style>
-    body {
+    * {
+      box-sizing: border-box;
       margin: 0;
-      font-family: 'Segoe UI', sans-serif;
-      background-color: #0a0a1a;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+      background: linear-gradient(135deg, #0a0a1a 0%, #0c1630 100%);
       color: #dfe4f2;
-      text-align: center;
       padding: 30px 20px;
+      text-align: center;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      line-height: 1.6;
+      background-attachment: fixed;
+    }
+
+    .container {
+      max-width: 800px;
+      width: 100%;
+      margin: 0 auto;
+      padding: 20px;
+    }
+
+    header {
+      margin-bottom: 30px;
     }
 
     h1 {
-      font-size: 2rem;
+      font-size: 2.4rem;
       color: #00f0ff;
-      margin-bottom: 10px;
+      margin-bottom: 15px;
+      letter-spacing: 0.5px;
+      text-shadow: 0 0 15px rgba(0, 240, 255, 0.5);
+      font-weight: 700;
     }
 
-    p {
-      font-size: 1rem;
-      color: #c0d9ff;
+    .subtitle {
+      font-size: 1.2rem;
+      color: #b8cffe;
+      max-width: 600px;
+      margin: 0 auto 25px;
     }
 
     .qr-container {
       margin: 30px auto;
-      background: rgba(255, 255, 255, 0.03);
-      padding: 20px;
-      border-radius: 12px;
-      box-shadow: 0 0 30px #00f0ff55;
+      background: rgba(255, 255, 255, 0.05);
+      padding: 25px;
+      border-radius: 16px;
+      box-shadow: 0 0 35px rgba(0, 240, 255, 0.3);
       max-width: 300px;
+      border: 1px solid rgba(0, 240, 255, 0.2);
+      backdrop-filter: blur(5px);
     }
 
     .qr-container img {
       width: 100%;
       max-width: 250px;
-      height: auto;
       border-radius: 10px;
-      box-shadow: 0 0 20px #00f0ff;
+      box-shadow: 0 0 20px rgba(0, 240, 255, 0.6);
+      aspect-ratio: 1/1;
+      object-fit: cover;
     }
 
     .pay-button {
       display: inline-block;
-      margin-top: 25px;
-      padding: 15px 35px;
-      font-size: 1rem;
-      background: linear-gradient(to right, #00c6ff, #0072ff);
-      color: white;
+      margin: 20px 0 10px;
+      padding: 16px 42px;
+      font-size: 1.1rem;
+      font-weight: 700;
+      background: linear-gradient(135deg, #00c6ff 0%, #0072ff 100%);
+      color: #ffffff;
       border: none;
-      border-radius: 8px;
+      border-radius: 12px;
       cursor: pointer;
       text-decoration: none;
-      transition: transform 0.2s, box-shadow 0.3s;
-      box-shadow: 0 0 15px #0072ff80;
+      transition: all 0.3s ease;
+      box-shadow: 0 0 18px rgba(0, 114, 255, 0.5);
+      position: relative;
+      overflow: hidden;
+      z-index: 1;
+    }
+
+    .pay-button::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(135deg, #0072ff 0%, #00c6ff 100%);
+      opacity: 0;
+      transition: opacity 0.3s ease;
+      z-index: -1;
     }
 
     .pay-button:hover {
-      transform: scale(1.05);
-      box-shadow: 0 0 25px #00c6ffb0;
+      transform: translateY(-3px);
+      box-shadow: 0 0 28px rgba(0, 198, 255, 0.7);
+    }
+
+    .pay-button:hover::after {
+      opacity: 1;
+    }
+
+    .notes {
+      max-width: 600px;
+      margin: 0 auto;
+      padding: 0 20px;
     }
 
     .note {
-      margin-top: 15px;
-      color: #70f0ff;
+      margin-top: 16px;
       font-size: 0.95rem;
-    }
-
-    .support-link, .contact-info {
-      display: block;
-      margin-top: 30px;
-      font-size: 1rem;
-      color: #9bb4ff;
-      text-decoration: none;
-    }
-
-    .support-link:hover,
-    .contact-info:hover {
-      color: #ffffff;
-    }
-
-    .plan-select {
-      margin-top: 30px;
-    }
-
-    select {
+      color: #7eeeff;
+      background: rgba(0, 240, 255, 0.08);
       padding: 12px 20px;
-      border-radius: 8px;
-      border: none;
-      background-color: #141425;
-      color: #ffffff;
-      font-size: 1rem;
-      box-shadow: 0 0 10px #00f0ff66;
+      border-radius: 10px;
+      border-left: 3px solid #00f0ff;
     }
 
-    label {
-      display: block;
-      margin-bottom: 10px;
-      color: #9bb4ff;
-      font-size: 1rem;
+    .note strong {
+      color: #ffffff;
+      font-weight: 600;
+    }
+
+    .support-section {
+      margin: 35px 0;
+      padding: 25px 0;
+      border-top: 1px solid rgba(0, 240, 255, 0.2);
+      border-bottom: 1px solid rgba(0, 240, 255, 0.2);
+      width: 100%;
+    }
+
+    .support-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      margin-top: 10px;
+      font-size: 1.15rem;
+      color: #a9c8ff;
+      text-decoration: none;
+      font-weight: 600;
+      padding: 12px 25px;
+      border-radius: 10px;
+      transition: all 0.3s ease;
+      background: rgba(169, 200, 255, 0.1);
+    }
+
+    .support-link:hover {
+      color: #ffffff;
+      background: rgba(169, 200, 255, 0.2);
+      text-shadow: 0 0 5px rgba(0, 240, 255, 0.5);
+      transform: translateY(-2px);
     }
 
     .contact-container {
-      margin-top: 40px;
+      margin-top: 20px;
+      font-size: 1.1rem;
       color: #9bb4ff;
-      font-size: 1rem;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 20px;
+      max-width: 500px;
+      margin: 0 auto;
     }
 
-    .contact-container p {
-      margin: 5px 0;
+    .contact-item {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 20px;
+      border-radius: 10px;
+      background: rgba(155, 180, 255, 0.08);
+      transition: all 0.3s ease;
+    }
+
+    .contact-item:hover {
+      background: rgba(155, 180, 255, 0.15);
+      transform: translateY(-2px);
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    footer {
+      margin-top: 40px;
+      font-size: 0.9rem;
+      color: #6d8eff;
+    }
+
+    @media screen and (max-width: 600px) {
+      h1 {
+        font-size: 2rem;
+      }
+      
+      .subtitle {
+        font-size: 1rem;
+      }
+      
+      .qr-container {
+        padding: 18px;
+      }
+      
+      .contact-container {
+        flex-direction: column;
+        gap: 12px;
+      }
+      
+      .pay-button {
+        width: 100%;
+        max-width: 300px;
+      }
     }
   </style>
 </head>
 <body>
+  <div class="container">
+    <header>
+      <h1>ZTX Hosting UPI Payment</h1>
+      <p class="subtitle">Make a payment below and reach out to our support team if needed</p>
+    </header>
 
-  <h1>ZTX Hosting UPI</h1>
-  <p>Scan the QR code below or tap the button to pay and claim your hosting plan.</p>
+    <div class="qr-container">
+      <img src="https://cdn.discordapp.com/attachments/1378295716052729858/1389851501329121310/IMG_20250702_114258.png?ex=68661f94&is=6864ce14&hm=b2bcd81775e45c84588ba2eb5d42c47a6d63dc5b74691ed9242fcba585ece027&" 
+           alt="ZTX Hosting UPI Payment QR Code">
+    </div>
 
-  <div class="qr-container">
-    <img src="https://cdn.discordapp.com/attachments/1378295716052729858/1389697561996165201/ZTX_Hosting__QR_Code.png?ex=68659036&is=68643eb6&hm=938ef5b929aeb98eda66a61c0b7a1a8d7416e39956e748fc62b40de3dc71b366&" alt="Payment QR Code" />
+    <a class="pay-button" href="upi://pay?pa=9064456592@fam&pn=ZTX Hosting" target="_blank" rel="noopener noreferrer">
+      💳 Pay Now via UPI
+    </a>
+
+    <div class="notes">
+      <p class="note">Redirects to your UPI app. Enter the correct amount based on your selected plan</p>
+      <p class="note">Plans range between ₹99 – ₹9999. Make sure to double-check before sending</p>
+      <p class="note">If the UPI link doesn't open, send manually to <strong>9064456592@fam</strong> using any UPI app</p>
+    </div>
+
+    <div class="support-section">
+      <a class="support-link" href="https://discord.gg/qeBsUuQ9Ux" target="_blank" rel="noopener noreferrer">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M19.27 5.33C18.17 4.71 16.96 4.26 15.67 4C15.41 4.5 15.11 5.16 14.87 5.68C13.5 5.46 12.11 5.46 10.76 5.68C10.52 5.15 10.21 4.5 9.96 4C8.67 4.26 7.46 4.71 6.36 5.33C3.61 8.78 2.96 12.04 3.25 15.28C4.73 16.31 6.2 17.01 7.66 17.47C8.21 16.8 8.69 16.07 9.08 15.29C8.38 14.98 7.72 14.58 7.1 14.11C7.29 13.95 7.47 13.79 7.64 13.62C10.1 15.15 12.97 15.15 15.39 13.62C15.56 13.79 15.74 13.95 15.92 14.11C15.3 14.58 14.64 14.98 13.94 15.29C14.33 16.07 14.81 16.8 15.36 17.47C16.82 17.01 18.29 16.31 19.77 15.28C20.13 11.58 19 8.31 19.27 5.33ZM9.5 14.25C8.7 14.25 8.06 13.55 8.06 12.65C8.06 11.75 8.69 11.05 9.5 11.05C10.31 11.05 10.95 11.75 10.94 12.65C10.94 13.55 10.31 14.25 9.5 14.25ZM14.5 14.25C13.7 14.25 13.06 13.55 13.06 12.65C13.06 11.75 13.69 11.05 14.5 11.05C15.31 11.05 15.95 11.75 15.94 12.65C15.94 13.55 15.31 14.25 14.5 14.25Z" fill="currentColor"/>
+        </svg>
+        Join Discord for Support
+      </a>
+    </div>
+
+    <div class="contact-container">
+      <a href="tel:+919064456592" class="contact-item">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M20 15.5C18.8 15.5 17.5 15.3 16.4 14.9C16.3 14.9 16.2 14.9 16.1 14.9C15.8 14.9 15.6 15 15.4 15.2L13.2 17.4C10.4 15.9 8 13.6 6.6 10.8L8.8 8.6C9.1 8.3 9.2 7.9 9 7.6C8.7 6.5 8.5 5.2 8.5 4C8.5 3.4 8.1 3 7.5 3H4C3.4 3 3 3.4 3 4C3 13.4 10.6 21 20 21C20.6 21 21 20.6 21 20V16.5C21 15.9 20.6 15.5 20 15.5Z" fill="currentColor"/>
+        </svg>
+        +91 9064456592
+      </a>
+      
+      <a href="mailto:ztxhosting.in@gmail.com" class="contact-item">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M20 8L12 13L4 8V6L12 11L20 6M20 4H4C2.9 4 2 4.9 2 6V18C2 19.1 2.9 20 4 20H20C21.1 20 22 19.1 22 18V6C22 4.9 21.1 4 20 4Z" fill="currentColor"/>
+        </svg>
+        ztxhosting.in@gmail.com
+      </a>
+    </div>
+
+    <footer>
+      <p>&copy; 2025 ZTX Hosting. All rights reserved.</p>
+    </footer>
   </div>
-
-  <a class="pay-button" href="upi://pay?pa=9064456592@fam&pn=ZTX Hosting" target="_blank">
-    Pay Now
-  </a>
-
-  <p class="note">You'll be redirected to your UPI app to complete payment.</p>
-  <p class="note">Please pay the correct amount based on your selected plan.<br>
-    Payment must be between ₹99 and ₹9999.
-  </p>
-
-  <a class="support-link" href="https://discord.gg/qeBsUuQ9Ux" target="_blank">
-    💬 Join Discord / Get Support
-  </a>
-
-  <div class="contact-container">
-    <p>📞 +91 9064456592</p>
-    <p>📧 ztxhosting.in@gmail.com</p>
-  </div>
-
 </body>
 </html>
