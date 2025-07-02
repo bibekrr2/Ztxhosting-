@@ -1,184 +1,144 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>ZTX Hosting – Minecraft Hosting Plans</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Pay And Contact Customer Care</title>
   <style>
     body {
       margin: 0;
       font-family: 'Segoe UI', sans-serif;
-      background: #0f0f0f;
-      color: #f0f0f0;
-    }
-
-    .hero {
-      background: #0288d1;
-      padding: 2rem 1rem;
+      background-color: #0a0a1a;
+      color: #dfe4f2;
       text-align: center;
+      padding: 30px 20px;
     }
 
-    .hero h1 {
-      font-size: 1.75rem;
-      color: white;
-      margin-bottom: 0.5rem;
+    h1 {
+      font-size: 2rem;
+      color: #00f0ff;
+      margin-bottom: 10px;
     }
 
-    .hero p {
+    p {
       font-size: 1rem;
-      color: #e0f7fa;
-      margin: 0.5rem 0 1.5rem;
+      color: #c0d9ff;
     }
 
-    .hero a {
-      display: inline-block;
-      background: transparent;
-      color: white;
-      padding: 0.7rem 1.4rem;
-      border: 2px dashed white;
-      border-radius: 8px;
-      text-decoration: none;
-      font-weight: bold;
+    .qr-container {
+      margin: 30px auto;
+      background: rgba(255, 255, 255, 0.03);
+      padding: 20px;
+      border-radius: 12px;
+      box-shadow: 0 0 30px #00f0ff55;
+      max-width: 300px;
     }
 
-    .hero a:hover {
-      background: rgba(255, 255, 255, 0.1);
-    }
-
-    .section {
-      padding: 1.5rem 1rem;
-      max-width: 960px;
-      margin: auto;
-    }
-
-    .section h2 {
-      color: #29b6f6;
-      margin-bottom: 1rem;
-      font-size: 1.3rem;
-    }
-
-    .features ul, .locations ul {
-      list-style: none;
-      padding: 0;
-    }
-
-    .features li, .locations li {
-      margin: 0.5rem 0;
-    }
-
-    .plans {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 1rem;
-      justify-content: center;
-    }
-
-    .plan-card {
-      background: #1a1a1a;
+    .qr-container img {
+      width: 100%;
+      max-width: 250px;
+      height: auto;
       border-radius: 10px;
-      padding: 1rem;
-      width: 280px;
-      box-shadow: 0 0 12px rgba(0,0,0,0.4);
+      box-shadow: 0 0 20px #00f0ff;
     }
 
-    .plan-card h3 {
-      margin: 0 0 0.5rem;
-      color: #4dd0e1;
-    }
-
-    .plan-card p {
-      margin: 0.3rem 0;
-      color: #ccc;
-    }
-
-    .plan-card .price {
-      color: #81d4fa;
-      font-weight: bold;
-    }
-
-    .order-button {
-      display: block;
-      text-align: center;
-      margin-top: 1rem;
-      background: #29b6f6;
-      color: #0f0f0f;
-      padding: 0.7rem;
-      border-radius: 6px;
+    .pay-button {
+      display: inline-block;
+      margin-top: 25px;
+      padding: 15px 35px;
+      font-size: 1rem;
+      background: linear-gradient(to right, #00c6ff, #0072ff);
+      color: white;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
       text-decoration: none;
-      font-weight: bold;
+      transition: transform 0.2s, box-shadow 0.3s;
+      box-shadow: 0 0 15px #0072ff80;
     }
 
-    .order-button:hover {
-      background: #03a9f4;
+    .pay-button:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 25px #00c6ffb0;
     }
 
-    .footer {
-      text-align: center;
-      padding: 1rem;
-      font-size: 0.9rem;
-      color: #aaa;
+    .note {
+      margin-top: 15px;
+      color: #70f0ff;
+      font-size: 0.95rem;
+    }
+
+    .support-link, .contact-info {
+      display: block;
+      margin-top: 30px;
+      font-size: 1rem;
+      color: #9bb4ff;
+      text-decoration: none;
+    }
+
+    .support-link:hover,
+    .contact-info:hover {
+      color: #ffffff;
+    }
+
+    .plan-select {
+      margin-top: 30px;
+    }
+
+    select {
+      padding: 12px 20px;
+      border-radius: 8px;
+      border: none;
+      background-color: #141425;
+      color: #ffffff;
+      font-size: 1rem;
+      box-shadow: 0 0 10px #00f0ff66;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 10px;
+      color: #9bb4ff;
+      font-size: 1rem;
+    }
+
+    .contact-container {
+      margin-top: 40px;
+      color: #9bb4ff;
+      font-size: 1rem;
+    }
+
+    .contact-container p {
+      margin: 5px 0;
     }
   </style>
 </head>
 <body>
 
-  <!-- Hero Section -->
-  <div class="hero">
-    <h1>🚀 ZTX Hosting Minecraft Plans
-    <p>🎮 Mumbai NCR Minecraft Hosting
-Now live with AMD EPYC servers – enjoy ultra-low ping across India!</p>
-    <a href="https://discord.gg/qeBsUuQ9Ux" target="_blank">BUY NOW</a>
+  <h1>ZTX Hosting UPI</h1>
+  <p>Scan the QR code below or tap the button to pay and claim your hosting plan.</p>
+
+  <div class="qr-container">
+    <img src="https://cdn.discordapp.com/attachments/1378295716052729858/1389697561996165201/ZTX_Hosting__QR_Code.png?ex=68659036&is=68643eb6&hm=938ef5b929aeb98eda66a61c0b7a1a8d7416e39956e748fc62b40de3dc71b366&" alt="Payment QR Code" />
   </div>
 
-  <!-- Features -->
-  <div class="section features">
-    <h2>
-    <ul>
-      <li>✅ Pterodactyl Panel Access</li>
-      <li>✅ Java & Bedrock Support</li>
-      <li>✅ DDoS Protection</li>
-      <li>✅ 24/7 Uptime Guarantee</li>
-      <li>✅ Free Subdomain</li>
-      <li>✅ Instant Setup</li>
-      <li>✅ UPI / PayPal / Cards Accepted</li>
-    </ul>
-  </div>
+  <a class="pay-button" href="upi://pay?pa=9064456592@fam&pn=ZTX Hosting" target="_blank">
+    Pay Now
+  </a>
 
-  <!-- All Plans -->
-  <div class="section">
-    <h2>💎 Minecraft Hosting Plans</h2>
-    <div class="plans">
-      <div class="plan-card"><h3>🔹 Plan 1 – Nano</h3><p>💾 1 GB RAM | ⚙️ 60% CPU | 💽 10 GB Disk</p><p class="price">💰 ₹49/month</p><a class="order-button" href="https://discord.gg/qeBsUuQ9Ux">Order Now</a></div>
-      <div class="plan-card"><h3>🔹 Plan 2 – Basic</h3><p>💾 2 GB RAM | ⚙️ 100% CPU | 💽 15 GB Disk</p><p class="price">💰 ₹99/month</p><a class="order-button" href="https://discord.gg/qeBsUuQ9Ux">Order Now</a></div>
-      <div class="plan-card"><h3>🔹 Plan 3 – Starter</h3><p>💾 3 GB RAM | ⚙️ 150% CPU | 💽 20 GB Disk</p><p class="price">💰 ₹129/month</p><a class="order-button" href="https://discord.gg/qeBsUuQ9Ux">Order Now</a></div>
-      <div class="plan-card"><h3>🔹 Plan 4 – Lite</h3><p>💾 4 GB RAM | ⚙️ 160% CPU | 💽 25 GB Disk</p><p class="price">💰 ₹159/month</p><a class="order-button" href="https://discord.gg/qeBsUuQ9Ux">Order Now</a></div>
-      <div class="plan-card"><h3>🔹 Plan 5 – Gamer</h3><p>💾 5 GB RAM | ⚙️ 190% CPU | 💽 30 GB Disk</p><p class="price">💰 ₹199/month</p><a class="order-button" href="https://discord.gg/qeBsUuQ9Ux">Order Now</a></div>
-      <div class="plan-card"><h3>🔹 Plan 6 – Power</h3><p>💾 6 GB RAM | ⚙️ 210% CPU | 💽 35 GB Disk</p><p class="price">💰 ₹249/month</p><a class="order-button" href="https://discord.gg/qeBsUuQ9Ux">Order Now</a></div>
-      <div class="plan-card"><h3>🔹 Plan 7 – Pro</h3><p>💾 7 GB RAM | ⚙️ 260% CPU | 💽 40 GB Disk</p><p class="price">💰 ₹279/month</p><a class="order-button" href="https://discord.gg/qeBsUuQ9Ux">Order Now</a></div>
-      <div class="plan-card"><h3>🔹 Plan 8 – Ultra</h3><p>💾 8 GB RAM | ⚙️ 290% CPU | 💽 45 GB Disk</p><p class="price">💰 ₹319/month</p><a class="order-button" href="https://discord.gg/qeBsUuQ9Ux">Order Now</a></div>
-      <div class="plan-card"><h3>🔹 Plan 9 – Elite</h3><p>💾 10 GB RAM | ⚙️ 300% CPU | 💽 55 GB Disk</p><p class="price">💰 ₹379/month</p><a class="order-button" href="https://discord.gg/qeBsUuQ9Ux">Order Now</a></div>
-      <div class="plan-card"><h3>🔹 Plan 10 – Max</h3><p>💾 12 GB RAM | ⚙️ 310% CPU | 💽 65 GB Disk</p><p class="price">💰 ₹439/month</p><a class="order-button" href="https://discord.gg/qeBsUuQ9Ux">Order Now</a></div>
-      <div class="plan-card"><h3>🔹 Plan 11 – Extreme</h3><p>💾 14 GB RAM | ⚙️ 360% CPU | 💽 75 GB Disk</p><p class="price">💰 ₹499/month</p><a class="order-button" href="https://discord.gg/qeBsUuQ9Ux">Order Now</a></div>
-      <div class="plan-card"><h3>🔹 Plan 12 – Titan</h3><p>💾 16 GB RAM | ⚙️ 390% CPU | 💽 85 GB Disk</p><p class="price">💰 ₹549/month</p><a class="order-button" href="https://discord.gg/qeBsUuQ9Ux">Order Now</a></div>
-      <div class="plan-card"><h3>🔹 Plan 13 – God</h3><p>💾 18 GB RAM | ⚙️ 410% CPU | 💽 95 GB Disk</p><p class="price">💰 ₹599/month</p><a class="order-button" href="https://discord.gg/qeBsUuQ9Ux">Order Now</a></div>
-      <div class="plan-card"><h3>🔹 Plan 14 – Beast</h3><p>💾 20 GB RAM | ⚙️ 460% CPU | 💽 100+ GB Disk</p><p class="price">💰 ₹649/month</p><a class="order-button" href="https://discord.gg/qeBsUuQ9Ux">Order Now</a></div>
-    </div>
-  </div>
+  <p class="note">You'll be redirected to your UPI app to complete payment.</p>
+  <p class="note">Please pay the correct amount based on your selected plan.<br>
+    Payment must be between ₹99 and ₹9999.
+  </p>
 
-  <!-- Locations -->
-  <div class="section locations">
-    <h2>🌍 Available Locations:</h2>
-    <ul>
-      <li>🇮🇳 India</li>
-      <li>🇸🇬 Singapore</li>
-      <li>🇺🇸 USA</li>
-      <li>🇩🇪 Germany</li>
-    </ul>
-  </div>
+  <a class="support-link" href="https://discord.gg/ztxhosting" target="_blank">
+    💬 Join Discord / Get Support
+  </a>
 
-  <!-- Footer -->
-  <div class="footer">
-    &copy; 2025 ZTX Hosting – All rights reserved.
+  <div class="contact-container">
+    <p>📞 +91 9064456592</p>
+    <p>📧 ztxhosting.in@gmail.com</p>
   </div>
 
 </body>
