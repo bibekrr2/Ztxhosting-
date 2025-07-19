@@ -2,410 +2,626 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>ZTX Hosting – UPI Payment & Support</title>
-  <meta name="description" content="Make a payment and contact ZTX Hosting customer support easily via UPI, Discord, or Email.">
-  <meta property="og:title" content="ZTX Hosting – UPI Payment & Support">
-  <meta property="og:image" content="https://cdn.discordapp.com/attachments/1378295716052729858/1389851501329121310/IMG_20250702_114258.png">
-  <meta property="og:description" content="Make a payment and contact ZTX Hosting customer support easily via UPI, Discord, or Email.">
-  <meta name="theme-color" content="#00f0ff">
-  <link rel="icon" href="https://ztxhosting.site/favicon.ico">
-  <!-- Font Awesome for icons -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
+  <meta name="description" content="Premium Game Server Hosting Support for Minecraft, Rust, ARK, and more.">
+  <title>ZTX Hosting | Support</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet" />
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/marked/12.0.2/marked.min.js"></script>
+
   <style>
+    /* CSS Variables from dedicated.html */
     :root {
-      --primary-color: #00f0ff;
-      --secondary-color: #0072ff;
-      --text-color: #dfe4f2;
-      --bg-gradient: linear-gradient(135deg, #0a0a1a 0%, #0c1630 100%);
-      --card-bg: rgba(255, 255, 255, 0.05);
-      --card-border: rgba(0, 240, 255, 0.2);
+      --primary: #1A1A1A; /* Dark Charcoal for main text/elements */
+      --secondary: #674CC4; /* Hostinger's main purple */
+      --accent: #8E6CEF; /* A lighter, more vibrant purple for accents/CTAs */
+      --dark: #000000; /* Pure Black */
+      --light: #FFFFFF; /* Pure White */
+      --gray: #666666; /* Medium Gray for secondary text */
+      --light-gray: #F0F0F0; /* Very light gray for subtle backgrounds like nav hover */
+      --deep-purple-blue: #4D2FDB; /* A deep blue-purple for gradient */
+
+      /* Transition speed for smooth animations */
+      --transition-speed: 0.3s ease;
     }
 
+    /* Universal Box-Sizing */
     * {
-      box-sizing: border-box;
       margin: 0;
       padding: 0;
+      box-sizing: border-box;
     }
 
+    /* Body Styles: Font, Background, Color, Line Height */
     body {
-      font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
-      background: var(--bg-gradient);
-      color: var(--text-color);
-      padding: 30px 20px;
-      text-align: center;
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
+      font-family: 'Poppins', sans-serif;
+      background: var(--light);
+      color: var(--dark);
       line-height: 1.6;
-      background-attachment: fixed;
+      overflow-x: hidden; /* Prevent horizontal scroll on small screens */
     }
 
-    .container {
-      max-width: 800px;
-      width: 100%;
-      margin: 0 auto;
-      padding: 20px;
-    }
-
+    /* Header Styles: Sticky navigation bar */
     header {
-      margin-bottom: 30px;
-      animation: fadeIn 1s ease;
-    }
-
-    h1 {
-      font-size: 2.4rem;
-      color: var(--primary-color);
-      margin-bottom: 15px;
-      letter-spacing: 0.5px;
-      text-shadow: 0 0 15px rgba(0, 240, 255, 0.5);
-      font-weight: 700;
-    }
-
-    .subtitle {
-      font-size: 1.2rem;
-      color: #b8cffe;
-      max-width: 600px;
-      margin: 0 auto 25px;
-    }
-
-    .payment-section {
-      background: var(--card-bg);
-      padding: 30px;
-      border-radius: 16px;
-      box-shadow: 0 0 35px rgba(0, 240, 255, 0.3);
-      border: 1px solid var(--card-border);
-      backdrop-filter: blur(5px);
-      margin: 30px auto;
-      max-width: 500px;
-      animation: slideUp 0.8s ease;
-    }
-
-    .qr-container {
-      margin: 0 auto 20px;
-      padding: 15px;
-      background: white;
-      border-radius: 12px;
-      width: fit-content;
-    }
-
-    .qr-container img {
-      width: 220px;
-      height: 220px;
-      border-radius: 8px;
-      aspect-ratio: 1 / 1;
-      object-fit: cover;
-    }
-
-    .upi-details {
-      margin: 20px 0;
-      padding: 15px;
-      background: rgba(0, 240, 255, 0.1);
-      border-radius: 10px;
-      border-left: 3px solid var(--primary-color);
-    }
-
-    .upi-id {
-      font-size: 1.2rem;
-      font-weight: 600;
-      color: white;
-      word-break: break-all;
-    }
-
-    .pay-button {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 10px;
-      margin: 15px 0;
-      padding: 16px 32px;
-      font-size: 1.1rem;
-      font-weight: 700;
-      background: linear-gradient(135deg, #00c6ff 0%, var(--secondary-color) 100%);
-      color: #ffffff;
-      border: none;
-      border-radius: 12px;
-      cursor: pointer;
-      text-decoration: none;
-      transition: all 0.3s ease;
-      box-shadow: 0 0 18px rgba(0, 114, 255, 0.5);
-      position: relative;
-      overflow: hidden;
-      z-index: 1;
-      width: 100%;
-      max-width: 280px;
-    }
-
-    .pay-button::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: -100%;
-      width: 100%;
-      height: 100%;
-      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
-      transition: 0.5s;
-    }
-
-    .pay-button:hover::before {
-      left: 100%;
-    }
-
-    .pay-button:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 0 28px rgba(0, 198, 255, 0.7);
-    }
-
-    .note {
-      margin-top: 16px;
-      font-size: 0.95rem;
-      color: #7eeeff;
-      background: rgba(0, 240, 255, 0.08);
-      padding: 12px 20px;
-      border-radius: 10px;
-      border-left: 3px solid var(--primary-color);
-      max-width: 600px;
-      margin-left: auto;
-      margin-right: auto;
-    }
-
-    .note strong {
-      color: #ffffff;
-      font-weight: 600;
-    }
-
-    .support-section {
-      margin: 35px 0;
-      padding: 25px 0;
-      border-top: 1px solid var(--card-border);
-      border-bottom: 1px solid var(--card-border);
-      width: 100%;
-      animation: fadeIn 1s ease 0.2s both;
-    }
-
-    .support-title {
-      font-size: 1.5rem;
-      margin-bottom: 20px;
-      color: var(--primary-color);
-    }
-
-    .support-links {
+      background: var(--light);
+      padding: 15px 5%; /* Responsive padding */
       display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 15px;
-      max-width: 600px;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+      position: sticky;
+      top: 0;
+      z-index: 1000; /* Ensures header stays on top */
+    }
+
+    /* Logo Styles */
+    .logo {
+      font-weight: 700;
+      font-size: 1.5rem;
+      color: var(--primary);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .logo img {
+      width: 35px;
+      height: 35px;
+    }
+
+    /* Navigation Menu Styles */
+    .nav-menu {
+      display: flex;
+      gap: 20px;
+    }
+
+    .nav-menu a {
+      color: var(--dark);
+      text-decoration: none;
+      font-weight: 500;
+      padding: 8px 12px;
+      border-radius: 4px;
+      transition: all var(--transition-speed); /* Smooth transitions for hover */
+    }
+
+    .nav-menu a:hover, .nav-menu a.active {
+      background: var(--light-gray);
+      color: var(--primary);
+    }
+
+    .nav-menu .login-btn {
+      color: var(--secondary); /* Distinct color for login button */
+      margin-left: 10px;
+    }
+
+    /* Mobile Menu Button (Hidden on Desktop) */
+    .mobile-menu-btn {
+      display: none; /* Hidden by default */
+      background: none;
+      border: none;
+      color: var(--primary);
+      font-size: 1.8rem;
+      cursor: pointer;
+    }
+
+    /* General Container for Centering Content */
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px; /* Responsive horizontal padding */
+    }
+
+    /* Section Spacing */
+    .section {
+      padding: 80px 0;
+      background-color: var(--light); /* Ensure section background is light */
+    }
+
+    /* Section Title Styles */
+    .section-title {
+      text-align: center;
+      margin-bottom: 50px;
+    }
+
+    .section-title h1, .section-title h2 { /* Both h1 and h2 for titles */
+      font-size: clamp(1.8rem, 4vw, 2.5rem); /* Responsive font size */
+      color: var(--primary);
+      margin-bottom: 15px;
+    }
+
+    .section-title p {
+      color: var(--gray);
+      max-width: 800px; /* Wider paragraph for support intro */
       margin: 0 auto;
     }
 
-    .support-link {
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      padding: 14px 25px;
+    /* Support Content Area Styling */
+    .support-content {
+      background: var(--light);
+      border-radius: 8px;
+      padding: 40px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+      margin-top: 30px; /* Space from section title */
+    }
+
+    .support-content h2 { /* Headings within the support content block */
+      font-size: 1.8rem;
+      color: var(--secondary);
+      margin-top: 40px; /* Space between sections like Contact Us and FAQs */
+      margin-bottom: 20px;
+      border-bottom: 2px solid var(--light-gray);
+      padding-bottom: 10px;
+    }
+
+    .support-content h2:first-of-type { /* No top margin for the first h2 if present */
+      margin-top: 0;
+    }
+
+    /* Contact Info Styling */
+    .contact-info p {
+      margin: 15px 0;
       font-size: 1.1rem;
-      color: #a9c8ff;
+      color: var(--primary);
+    }
+
+    .contact-info a {
+      color: var(--accent);
       text-decoration: none;
-      font-weight: 600;
-      border-radius: 10px;
-      transition: all 0.3s ease;
-      background: rgba(169, 200, 255, 0.1);
-      border: 1px solid rgba(169, 200, 255, 0.2);
-      min-width: 220px;
+      font-weight: 500;
+      transition: color var(--transition-speed);
     }
 
-    .support-link:hover {
-      color: #ffffff;
-      background: rgba(169, 200, 255, 0.2);
-      text-shadow: 0 0 5px rgba(0, 240, 255, 0.5);
-      transform: translateY(-2px);
-      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    .contact-info a:hover {
+      color: var(--secondary);
+      text-decoration: underline;
     }
 
-    .contact-container {
-      margin-top: 20px;
-      font-size: 1.1rem;
-      color: #9bb4ff;
+    /* FAQ Item Styling */
+    .faq-item {
+      margin-bottom: 25px;
+      padding-bottom: 20px;
+      border-bottom: 1px dashed var(--light-gray);
+    }
+
+    .faq-item:last-child {
+      border-bottom: none; /* No border for the last FAQ item */
+    }
+
+    .faq-item h3 {
+      margin-top: 0;
+      font-size: 1.3rem;
+      color: var(--primary);
+      margin-bottom: 10px;
+    }
+
+    .faq-item p {
+      color: var(--gray);
+      font-size: 1rem;
+    }
+
+    /* AI Assistant Section */
+    .ai-assistant-section {
+        margin-top: 40px;
+        padding-top: 20px;
+        border-top: 2px solid var(--light-gray);
+    }
+
+    .ai-assistant-section h2 {
+        margin-top: 0; /* Override margin-top from .support-content h2 */
+    }
+
+    .ai-input-group {
+        display: flex;
+        gap: 10px;
+        margin-bottom: 20px;
+        flex-wrap: wrap; /* Allow items to wrap on smaller screens */
+    }
+
+    .ai-input-group input[type="text"] {
+        flex-grow: 1; /* Input takes up available space */
+        padding: 12px 15px;
+        border: 1px solid var(--light-gray);
+        border-radius: 4px;
+        font-size: 1rem;
+        color: var(--primary);
+        outline: none; /* Remove default outline on focus */
+        transition: border-color var(--transition-speed), box-shadow var(--transition-speed); /* Add box-shadow for glow */
+        min-width: 200px; /* Minimum width for input */
+    }
+
+    .ai-input-group input[type="text"]:focus {
+        border-color: var(--secondary); /* Highlight border on focus */
+        box-shadow: 0 0 0 3px rgba(103, 76, 196, 0.3); /* Subtle glow effect */
+    }
+
+    .ai-input-group button {
+        padding: 12px 25px;
+        font-weight: 600;
+        font-size: 1rem;
+        color: var(--light);
+        border-radius: 4px;
+        background: var(--accent); /* Accent purple background */
+        text-decoration: none;
+        transition: var(--transition-speed);
+        border: none; /* Remove default button border */
+        cursor: pointer;
+        display: flex; /* Align icon and text */
+        align-items: center;
+        gap: 8px; /* Space between text and icon */
+    }
+
+    .ai-input-group button:hover {
+        background: var(--secondary); /* Darker purple on hover */
+        transform: translateY(-2px); /* Lift effect */
+        box-shadow: 0 5px 15px rgba(103, 76, 196, 0.3); /* Shadow on hover */
+    }
+
+    #ai-response-area {
+        background-color: var(--light-gray);
+        border-radius: 8px;
+        padding: 20px;
+        min-height: 100px; /* Minimum height for response area */
+        color: var(--primary);
+        font-size: 1rem;
+        line-height: 1.6;
+        white-space: pre-wrap; /* Preserve whitespace and line breaks */
+        word-wrap: break-word; /* Break long words */
+        box-shadow: inset 0 1px 3px rgba(0,0,0,0.05); /* Subtle inner shadow */
+        text-align: left; /* Text alignment changed to left */
+        opacity: 0; /* Hidden by default */
+        transition: opacity var(--transition-speed);
+        position: relative; /* For loading dots positioning */
+    }
+
+    #ai-response-area.visible {
+        opacity: 1; /* Show when active */
+    }
+    #ai-response-area.loading {
+        color: var(--gray);
+        font-style: italic;
+        text-align: center; /* Center "Thinking..." with dots */
+    }
+
+    #ai-response-area.error {
+        color: #D8000C; /* Red for errors */
+        background-color: #FFD2D2; /* Light red background for errors */
+    }
+
+    /* Naye styles yahan add karein AI text rendering ke liye */
+    #ai-response-area p {
+        margin-bottom: 1em; /* Paragraph ke beech space */
+        color: var(--primary);
+    }
+
+    #ai-response-area h1,
+    #ai-response-area h2,
+    #ai-response-area h3,
+    #ai-response-area h4,
+    #ai-response-area h5,
+    #ai-response-area h6 {
+        color: var(--secondary); /* Headings ka rang badal dein */
+        margin-top: 1.5em; /* Headings ke upar space */
+        margin-bottom: 0.8em; /* Headings ke neeche space */
+        font-weight: 600;
+        line-height: 1.3;
+    }
+
+    #ai-response-area h1 { font-size: 1.8em; }
+    #ai-response-area h2 { font-size: 1.5em; }
+    #ai-response-area h3 { font-size: 1.3em; }
+
+    #ai-response-area strong {
+        color: var(--dark); /* Bold text ko aur prominent karein */
+    }
+
+    #ai-response-area em {
+        font-style: italic; /* Italic text */
+    }
+
+    #ai-response-area ul,
+    #ai-response-area ol {
+        margin-left: 2em; /* Lists ko indent karein */
+        margin-bottom: 1em;
+        padding: 0;
+    }
+
+    #ai-response-area li {
+        margin-bottom: 0.5em; /* List items ke beech space */
+        color: var(--primary);
+    }
+
+    #ai-response-area pre {
+        background-color: var(--dark); /* Code blocks ka background */
+        color: var(--light); /* Code text ka rang */
+        padding: 1em;
+        border-radius: 5px;
+        overflow-x: auto; /* Agar code lamba ho toh scrollable */
+        font-family: 'Consolas', 'Monaco', 'Courier New', monospace;
+        margin-bottom: 1em;
+    }
+
+    #ai-response-area code {
+        background-color: var(--light-gray); /* Inline code ka background */
+        color: var(--primary);
+        padding: 0.2em 0.4em;
+        border-radius: 3px;
+        font-family: 'Consolas', 'Monaco', 'Courier New', monospace;
+    }
+
+    #ai-response-area blockquote {
+        border-left: 4px solid var(--accent); /* Blockquotes ke liye left border */
+        padding-left: 1em;
+        margin: 1em 0;
+        color: var(--gray);
+        font-style: italic;
+    }
+
+    #ai-response-area a {
+        color: var(--accent);
+        text-decoration: underline;
+    }
+
+    /* Footer Styles */
+    .footer {
+      background: var(--primary); /* Dark background */
+      color: var(--light);
+      padding: 50px 5% 30px;
+    }
+
+    .footer-links {
       display: flex;
-      flex-wrap: wrap;
       justify-content: center;
       gap: 20px;
-      max-width: 500px;
-      margin-left: auto;
-      margin-right: auto;
+      margin-top: 20px; /* Space between copyright and links */
+      margin-bottom: 20px; /* Space between links and bottom text */
+      flex-wrap: wrap; /* Allow links to wrap on smaller screens */
     }
 
-    .contact-item {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      padding: 12px 20px;
-      border-radius: 10px;
-      background: rgba(155, 180, 255, 0.08);
-      transition: all 0.3s ease;
+    .footer-links a {
+      color: var(--gray);
       text-decoration: none;
-      color: inherit;
-      border: 1px solid rgba(155, 180, 255, 0.2);
+      font-weight: 500;
+      transition: color var(--transition-speed);
     }
 
-    .contact-item:hover {
-      background: rgba(155, 180, 255, 0.15);
-      transform: translateY(-2px);
-      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    .footer-links a:hover {
+      color: var(--light);
     }
 
-    footer {
-      margin-top: 40px;
+    .footer-bottom {
+      text-align: center;
+      padding-top: 30px;
+      border-top: 1px solid rgba(255, 255, 255, 0.1); /* Subtle white border */
+      color: var(--gray);
       font-size: 0.9rem;
-      color: #6d8eff;
-      animation: fadeIn 1s ease 0.4s both;
     }
 
-    /* Animations */
-    @keyframes fadeIn {
-      from { opacity: 0; }
-      to { opacity: 1; }
-    }
-
-    @keyframes slideUp {
-      from { 
-        opacity: 0;
-        transform: translateY(20px);
+    /* Responsive Adjustments for Mobile (max-width: 768px) */
+    @media (max-width: 768px) {
+      header {
+          padding: 10px 5%; /* Smaller padding for header on mobile */
       }
-      to { 
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-
-    /* Loading animation */
-    .loader {
-      display: none;
-      width: 24px;
-      height: 24px;
-      border: 3px solid rgba(255,255,255,0.3);
-      border-radius: 50%;
-      border-top-color: white;
-      animation: spin 1s ease-in-out infinite;
-    }
-
-    @keyframes spin {
-      to { transform: rotate(360deg); }
-    }
-
-    /* Responsive styles */
-    @media screen and (max-width: 600px) {
-      h1 {
-        font-size: 2rem;
-      }
-
-      .subtitle {
-        font-size: 1rem;
-      }
-
-      .payment-section {
+      .nav-menu {
+        display: none; /* Hide navigation menu by default on mobile */
+        position: absolute;
+        top: 60px; /* Position below header */
+        left: 0;
+        right: 0;
+        background: var(--light);
+        flex-direction: column; /* Stack menu items vertically */
         padding: 20px;
+        box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+        z-index: 999; /* Below header, above content */
       }
 
-      .qr-container img {
-        width: 180px;
-        height: 180px;
+      .nav-menu.active {
+        display: flex; /* Show menu when active */
       }
 
-      .support-links {
-        flex-direction: column;
-        align-items: center;
+      .mobile-menu-btn {
+        display: block; /* Show mobile menu button */
       }
 
-      .support-link {
-        width: 100%;
-        justify-content: center;
+      .footer-links {
+        flex-direction: column; /* Stack footer links vertically on mobile */
+        gap: 10px; /* Reduce gap */
       }
 
-      .contact-container {
-        flex-direction: column;
-        gap: 12px;
+      .section {
+        padding: 60px 0; /* Adjust section padding */
       }
 
-      .pay-button {
-        width: 100%;
+      .section-title {
+        margin-bottom: 40px;
       }
+      
+      .support-content {
+          padding: 25px; /* Smaller padding for support content on mobile */
+      }
+
+      .support-content h2 {
+          font-size: 1.6rem;
+      }
+      .contact-info p {
+          font-size: 1rem;
+      }
+      .faq-item h3 {
+          font-size: 1.2rem;
+      }
+      /* AI Assistant Mobile Adjustments */
+      .ai-input-group {
+          flex-direction: column; /* Stack input and button vertically */
+      }
+      .ai-input-group button {
+          width: 100%; /* Full width button */
+      }
+    }
+
+    /* Responsive Adjustments for Tablets (max-width: 1024px) */
+    @media (max-width: 1024px) {
+        .nav-menu {
+            gap: 15px; /* Reduce gap between nav items */
+        }
+        .section-title h1, .section-title h2 {
+            font-size: clamp(2rem, 3.5vw, 2.8rem);
+        }
     }
   </style>
 </head>
 <body>
-  <div class="container">
-    <header>
-      <h1>ZTX Hosting UPI Payment</h1>
-      <p class="subtitle">Make a payment below and reach out to our support team if needed</p>
-    </header>
 
-    <div class="payment-section">
-      <div class="qr-container">
-        <img src="https://cdn.discordapp.com/attachments/1378295716052729858/1390542080392171661/IMG_20250704_091747.jpg?ex=6868a2ba&is=6867513a&hm=af022688fb67e6855357013b83d96ada31e651a44e1ab4b0951dd5cd50597577&" alt="ZTX Hosting UPI Payment QR Code" />
-      </div>
-
-      <div class="upi-details">
-        <p>UPI ID:</p>
-        <p class="upi-id">ztxhosting.in@okicici</p>
-      </div>
-
-
-      <p class="note">After payment, please share the screenshot with our support team for confirmation.</p>
-    </div>
-
-    <div class="support-section">
-      <h2 class="support-title">Need Help? Contact Us</h2>
-      
-      <div class="support-links">
-        <a class="support-link" href="https://discord.gg/qeBsUuQ9Ux" target="_blank" rel="noopener noreferrer">
-          <i class="fab fa-discord"></i> Discord Support
-        </a>
-        
-        <a class="support-link" href="mailto:ztxhosting.in@gmail.com" target="_blank" rel="noopener noreferrer">
-          <i class="fas fa-envelope"></i> Email Support
-        </a>
-        
-        <a class="support-link" href="tel:+919064456592" target="_blank" rel="noopener noreferrer">
-          <i class="fas fa-phone-alt"></i> Call Support
-        </a>
-        
-        <a class="support-link" href="https://wa.me/919064456592" target="_blank" rel="noopener noreferrer">
-          <i class="fab fa-whatsapp"></i> WhatsApp Support
-        </a>
-      </div>
-    </div>
-
-    <footer>
-      <p>&copy; 2025 ZTX Hosting. All rights reserved.</p>
-    </footer>
+<header>
+  <div class="logo">
+    <img src="https://ztxhosting.site/favicon.png" alt="ZTX Logo" />
+    ZTX Hosting
   </div>
+  <nav class="nav-menu" id="nav-menu">
+    <a href="https://ztxhosting.site/game-hosting">Game Hosting</a>
+    <a href="https://ztxhosting.site/vps">VPS</a>
+    <a href="https://ztxhosting.site/dedicated">Dedicated</a>
+    <a href="https://ztxhosting.site/support" class="support-btn active">Support</a>
+    <a href="https://ztxhosting.site/coming" class="login-btn">Login</a>
+  </nav>
+  <button class="mobile-menu-btn" onclick="toggleMenu()">
+    <i class="fas fa-bars"></i>
+  </button>
+</header>
 
-  <script>
-    // Add loading state to payment button
-    document.getElementById('payButton').addEventListener('click', function() {
-      const loader = document.getElementById('buttonLoader');
-      loader.style.display = 'inline-block';
-      
-      // Simulate processing delay
-      setTimeout(() => {
-        loader.style.display = 'none';
-      }, 2000);
-    });
+<section class="section">
+  <div class="container">
+    <div class="section-title">
+      <h1>Welcome to ZTX Hosting Support</h1>
+      <p>We're here to help you with any questions or issues you might have. Please find our contact information and frequently asked questions below.</p>
+    </div>
 
-    // Copy UPI ID to clipboard
-    document.querySelector('.upi-id').addEventListener('click', function() {
-      const upiId = 'ztxhosting@slc';
-      navigator.clipboard.writeText(upiId).then(() => {
-        const originalText = this.textContent;
-        this.textContent = 'Copied to clipboard!';
-        setTimeout(() => {
-          this.textContent = originalText;
-        }, 2000);
-      });
+    <div class="support-content">
+        <div class="ai-assistant-section">
+            <h2>✨ Smart Support Assistant ✨</h2>
+            <p style="color: var(--gray); margin-bottom: 20px;">Ask our AI assistant any question about hosting, servers, or common technical issues, and get an instant response!</p>
+            <div class="ai-input-group">
+                <input type="text" id="user-question" placeholder="e.g., How do I connect to my server via FTP?" aria-label="Ask a question to the AI assistant">
+                <button id="ask-ai-button">Ask AI <i class="fas fa-magic"></i></button>
+            </div>
+            <div id="ai-response-area" class="ai-response-area">
+                Your answer will appear here...
+            </div>
+        </div>
+
+        <h2>Contact Us</h2>
+        <div class="contact-info">
+            <p><strong>Discord:</strong> <a href="https://discord.gg/sDBbjb9VJ4" target="_blank">Join our Discord Server</a></p>
+            <p><strong>Email:</strong> <a href="mailto:ztxhosting.in@gmail.com">ztxhosting.in@gmail.com</a></p>
+            <p><strong>WhatsApp:</strong> <a href="https://wa.me/message/AOO4QHZ2USCPG1" target="_blank">Chat with us on WhatsApp</a></p>
+        </div>
+
+        <h2>Frequently Asked Questions (FAQs)</h2>
+
+        <div class="faq-item">
+            <h3>Q: How do I reset my password?</h3>
+            <p>A: You can reset your password by visiting the login page and clicking on the "Forgot Password" link. Follow the instructions sent to your registered email address.</p>
+        </div>
+        <div class="faq-item">
+            <h3>Q: What payment methods do you accept?</h3>
+            <p>A: We accept various payment methods including credit/debit cards, PayPal, and bank transfers. Please refer to our billing section for a complete list.</p>
+        </div>
+        <div class="faq-item">
+            <h3>Q: How can I upgrade my hosting plan?</h3>
+            <p>A: To upgrade your hosting plan, log in to your client area and navigate to the "Services" section. Select the plan you wish to upgrade and follow the upgrade prompts.</p>
+        </div>
+        <div class="faq-item">
+            <h3>Q: My website is down, what should I do?</h3>
+            <p>A: First, check your internet connection. If that's not the issue, please contact our support team immediately via any of the methods above, providing as much detail as possible.</p>
+        </div>
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="container">
+    <div class="footer-links">
+      <a href="https://ztxhosting.site/terms">Terms</a>
+      <a href="https://ztxhosting.site/privacy">Privacy</a>
+      <a href="https://ztxhosting.site/refund">Refund</a>
+      <a href="https://ztxhosting.site/blog">Blog</a>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2023 - 2025 ZTX Hosting | All rights reserved</p>
+    </div>
+  </div>
+</footer>
+
+<script>
+  function toggleMenu() {
+    document.getElementById('nav-menu').classList.toggle('active');
+  }
+
+  document.addEventListener('DOMContentLoaded', () => {
+    const askButton = document.getElementById('ask-ai-button');
+    const questionInput = document.getElementById('user-question');
+    const responseArea = document.getElementById('ai-response-area');
+
+    // API endpoint for the AI assistant
+    const apiEndpoint = 'https://ztx-hosting-1.onrender.com/api/ask-ai'; // API endpoint updated as requested
+
+    const handleAskAI = async () => {
+      const prompt = questionInput.value.trim();
+      if (!prompt) {
+        responseArea.textContent = "Please enter a question.";
+        responseArea.classList.add('visible', 'error');
+        // Removed animation class removal here
+        return;
+      }
+
+      responseArea.textContent = "Thinking..."; 
+      responseArea.classList.add('visible', 'loading');
+      // Removed animation class removal here
+      responseArea.classList.remove('error');
+
+      // Removed button animation
+      // askButton.classList.add('animate');
+      // setTimeout(() => { askButton.classList.remove('animate'); }, 200);
+
+      try {
+        const response = await fetch(apiEndpoint, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ prompt: prompt })
+        });
+
+        if (!response.ok) {
+            const errorData = await response.json();
+            throw new Error(errorData.error || `Server responded with status ${response.status}`);
+        }
+
+        const result = await response.json();
+        responseArea.innerHTML = marked.parse(result.answer);
+        // Removed AI text animation
+        // responseArea.classList.add('show-animated');
+
+      } catch (error) {
+        responseArea.textContent = `An error occurred: ${error.message}. Please ensure the backend server is running and the API endpoint is correct.`;
+        responseArea.classList.add('error');
+        // Removed animation class removal here
+        responseArea.classList.remove('loading');
+        console.error('Error fetching from backend:', error);
+      } finally {
+        responseArea.classList.remove('loading');
+        responseArea.classList.add('visible');
+      }
+    };
+    
+    askButton.addEventListener('click', handleAskAI);
+    
+    questionInput.addEventListener('keydown', (event) => {
+        if (event.key === 'Enter') {
+            event.preventDefault();
+            handleAskAI();
+        }
     });
-  </script>
+  });
+</script>
+
 </body>
 </html>
